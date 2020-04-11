@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NotasDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Asistencia">
+    <Key>
+      <PropertyRef Name="IdAsistencia" />
+    </Key>
+    <Property Name="IdAsistencia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMatricula" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="Asistio" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calificacion">
+    <Key>
+      <PropertyRef Name="IdCalificacion" />
+    </Key>
+    <Property Name="IdCalificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMatricula" Type="int" Nullable="false" />
+    <Property Name="IdDesempeno" Type="int" Nullable="false" />
+    <Property Name="Nota" Type="float" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Curso">
+    <Key>
+      <PropertyRef Name="IdCurso" />
+    </Key>
+    <Property Name="IdCurso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumGrado" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Desempeno">
+    <Key>
+      <PropertyRef Name="IdDesempeno" />
+    </Key>
+    <Property Name="IdDesempeno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Estudiante">
+    <Key>
+      <PropertyRef Name="IdEstudiante" />
+    </Key>
+    <Property Name="IdEstudiante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTipoIdentificacion" Type="int" Nullable="false" />
+    <Property Name="Identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="PrimerNombre" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="SegundoNombre" Type="varchar" MaxLength="15" />
+    <Property Name="PrimerApellido" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="SegundoApellido" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Matricula">
+    <Key>
+      <PropertyRef Name="IdMatricula" />
+    </Key>
+    <Property Name="IdMatricula" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEstudiante" Type="int" Nullable="false" />
+    <Property Name="IdCurso" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TipoIdentificacion">
+    <Key>
+      <PropertyRef Name="IdTipoIdentificacion" />
+    </Key>
+    <Property Name="IdTipoIdentificacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Asistencia_Matricula">
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="1" />
+    <End Role="Asistencia" Type="Self.Asistencia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matricula">
+        <PropertyRef Name="IdMatricula" />
+      </Principal>
+      <Dependent Role="Asistencia">
+        <PropertyRef Name="IdMatricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_Desempeno">
+    <End Role="Desempeno" Type="Self.Desempeno" Multiplicity="1" />
+    <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Desempeno">
+        <PropertyRef Name="IdDesempeno" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="IdDesempeno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Calificacion_Matricula">
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="1" />
+    <End Role="Calificacion" Type="Self.Calificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matricula">
+        <PropertyRef Name="IdMatricula" />
+      </Principal>
+      <Dependent Role="Calificacion">
+        <PropertyRef Name="IdMatricula" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Desempeno_Curso">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Desempeno" Type="Self.Desempeno" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Desempeno">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Estudiante_TipoIdentificacion">
+    <End Role="TipoIdentificacion" Type="Self.TipoIdentificacion" Multiplicity="1" />
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoIdentificacion">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Principal>
+      <Dependent Role="Estudiante">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Matricula_Curso">
+    <End Role="Curso" Type="Self.Curso" Multiplicity="1" />
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Curso">
+        <PropertyRef Name="IdCurso" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="IdCurso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Matricula_Estudiante">
+    <End Role="Estudiante" Type="Self.Estudiante" Multiplicity="1" />
+    <End Role="Matricula" Type="Self.Matricula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estudiante">
+        <PropertyRef Name="IdEstudiante" />
+      </Principal>
+      <Dependent Role="Matricula">
+        <PropertyRef Name="IdEstudiante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="NotasDBModelStoreContainer">
+    <EntitySet Name="Asistencia" EntityType="Self.Asistencia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calificacion" EntityType="Self.Calificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Curso" EntityType="Self.Curso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Desempeno" EntityType="Self.Desempeno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Estudiante" EntityType="Self.Estudiante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Matricula" EntityType="Self.Matricula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoIdentificacion" EntityType="Self.TipoIdentificacion" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Asistencia_Matricula" Association="Self.FK_Asistencia_Matricula">
+      <End Role="Matricula" EntitySet="Matricula" />
+      <End Role="Asistencia" EntitySet="Asistencia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_Desempeno" Association="Self.FK_Calificacion_Desempeno">
+      <End Role="Desempeno" EntitySet="Desempeno" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Calificacion_Matricula" Association="Self.FK_Calificacion_Matricula">
+      <End Role="Matricula" EntitySet="Matricula" />
+      <End Role="Calificacion" EntitySet="Calificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Desempeno_Curso" Association="Self.FK_Desempeno_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Desempeno" EntitySet="Desempeno" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Estudiante_TipoIdentificacion" Association="Self.FK_Estudiante_TipoIdentificacion">
+      <End Role="TipoIdentificacion" EntitySet="TipoIdentificacion" />
+      <End Role="Estudiante" EntitySet="Estudiante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Matricula_Curso" Association="Self.FK_Matricula_Curso">
+      <End Role="Curso" EntitySet="Curso" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Matricula_Estudiante" Association="Self.FK_Matricula_Estudiante">
+      <End Role="Estudiante" EntitySet="Estudiante" />
+      <End Role="Matricula" EntitySet="Matricula" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

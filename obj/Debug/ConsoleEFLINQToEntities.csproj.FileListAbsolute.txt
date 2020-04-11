@@ -1,0 +1,11 @@
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\ConsoleEFLINQToEntities.exe.config
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\ConsoleEFLINQToEntities.exe
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\ConsoleEFLINQToEntities.pdb
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\EntityFramework.dll
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\EntityFramework.SqlServer.dll
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\EntityFramework.xml
+D:\source\repos\ConsoleEFLINQToEntities\bin\Debug\EntityFramework.SqlServer.xml
+D:\source\repos\ConsoleEFLINQToEntities\obj\Debug\ConsoleEFLINQToEntities.csprojAssemblyReference.cache
+D:\source\repos\ConsoleEFLINQToEntities\obj\Debug\ConsoleEFLINQToEntities.csproj.CopyComplete
+D:\source\repos\ConsoleEFLINQToEntities\obj\Debug\ConsoleEFLINQToEntities.exe
+D:\source\repos\ConsoleEFLINQToEntities\obj\Debug\ConsoleEFLINQToEntities.pdb

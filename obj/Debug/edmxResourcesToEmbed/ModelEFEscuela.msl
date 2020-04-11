@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NotasDBModelStoreContainer" CdmEntityContainer="NotasDBEntities">
+    <EntitySetMapping Name="Asistencia">
+      <EntityTypeMapping TypeName="NotasDBModel.Asistencia">
+        <MappingFragment StoreEntitySet="Asistencia">
+          <ScalarProperty Name="IdAsistencia" ColumnName="IdAsistencia" />
+          <ScalarProperty Name="IdMatricula" ColumnName="IdMatricula" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Asistio" ColumnName="Asistio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calificacion">
+      <EntityTypeMapping TypeName="NotasDBModel.Calificacion">
+        <MappingFragment StoreEntitySet="Calificacion">
+          <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+          <ScalarProperty Name="IdMatricula" ColumnName="IdMatricula" />
+          <ScalarProperty Name="IdDesempeno" ColumnName="IdDesempeno" />
+          <ScalarProperty Name="Nota" ColumnName="Nota" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Curso">
+      <EntityTypeMapping TypeName="NotasDBModel.Curso">
+        <MappingFragment StoreEntitySet="Curso">
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="NumGrado" ColumnName="NumGrado" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Desempeno">
+      <EntityTypeMapping TypeName="NotasDBModel.Desempeno">
+        <MappingFragment StoreEntitySet="Desempeno">
+          <ScalarProperty Name="IdDesempeno" ColumnName="IdDesempeno" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Estudiante">
+      <EntityTypeMapping TypeName="NotasDBModel.Estudiante">
+        <MappingFragment StoreEntitySet="Estudiante">
+          <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matricula">
+      <EntityTypeMapping TypeName="NotasDBModel.Matricula">
+        <MappingFragment StoreEntitySet="Matricula">
+          <ScalarProperty Name="IdMatricula" ColumnName="IdMatricula" />
+          <ScalarProperty Name="IdEstudiante" ColumnName="IdEstudiante" />
+          <ScalarProperty Name="IdCurso" ColumnName="IdCurso" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TipoIdentificacion">
+      <EntityTypeMapping TypeName="NotasDBModel.TipoIdentificacion">
+        <MappingFragment StoreEntitySet="TipoIdentificacion">
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
